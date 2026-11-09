@@ -1,36 +1,46 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 此刻回信
 
-## Getting Started
+深夜说不出口的话，写一句，另一个时空的你，替你接住。
 
-First, run the development server:
+一个面向大学生深夜情绪场景的轻量 AI 产品：用户写下一句此刻的真实感受，AI 以「另一个时空的你」身份回信——会撒娇、会嘴硬心软，但最后一定接住你。回复可一键生成水墨/霓虹两种卡片，保存到相册、分享到朋友圈，分享卡底部的二维码把新朋友带回产品。
+
+## 线上体验
+
+https://huixin-app.sealoshzh.site
+
+## 它是怎么工作的
+
+1. 写一句此刻的感受
+2. DeepSeek 以「另一个时空的你」身份回信（口语、有情绪、一到两句）
+3. Canvas 前端把回复渲染成 1080×1440 的情绪卡 / 分享卡
+4. 手机端一键存相册（Web Share API），分享卡自带二维码回流
+
+## 技术栈
+
+- Next.js 16（App Router）+ TypeScript
+- Tailwind CSS 4
+- DeepSeek Chat API（服务端 route 调用）
+- Canvas 前端卡片渲染 + Web Share API 存相册
+- PWA（manifest + 图标），手机可添加到主屏幕
+- Docker + Sealos 部署，Kaniko 集群内构建镜像
+
+## 本地运行
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+在 `.env.local` 中配置：
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+DEEPSEEK_API_KEY=你的DeepSeek密钥
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 制作过程
 
-## Learn More
+完整的定位、决策与迭代记录见 [`BUILD_LOG.md`](BUILD_LOG.md)。
 
-To learn more about Next.js, take a look at the following resources:
+## 部署
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+镜像构建与发布流程见 `BUILD_LOG.md` 的部署章节，或直接参考仓库内 `Dockerfile`。
