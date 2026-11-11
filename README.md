@@ -1,46 +1,56 @@
-# 此刻回信
+# 此刻回信 · Ci Ke Hui Xin
 
-深夜说不出口的话，写一句，另一个时空的你，替你接住。
+*Say the words you can't say at night. Another you, in another time, will catch them.*
 
-一个面向大学生深夜情绪场景的轻量 AI 产品：用户写下一句此刻的真实感受，AI 以「另一个时空的你」身份回信——会撒娇、会嘴硬心软，但最后一定接住你。回复可一键生成水墨/霓虹两种卡片，保存到相册、分享到朋友圈，分享卡底部的二维码把新朋友带回产品。
+An AI emotional-companion web app for college students. Write one line about how you feel right now, and an AI persona — "the you in another time" — writes back: a little coquettish, a little tough-love, but always there to hold you. Turn the reply into an ink-wash or neon card, save it to your album, and share it to Moments; the QR code on the share card brings new friends back to the app.
 
-## 线上体验
+## Live
 
 https://huixin-app.sealoshzh.site
 
-## 它是怎么工作的
+## How it works
 
-1. 写一句此刻的感受
-2. DeepSeek 以「另一个时空的你」身份回信（口语、有情绪、一到两句）
-3. Canvas 前端把回复渲染成 1080×1440 的情绪卡 / 分享卡
-4. 手机端一键存相册（Web Share API），分享卡自带二维码回流
+1. Write one line about how you feel right now.
+2. DeepSeek replies as "the you in another time" (spoken, emotional, one or two sentences).
+3. The reply is rendered client-side into a 1080×1440 card (emotion card / share card).
+4. On mobile, save to album with one tap (Web Share API); the share card includes a QR code for re-entry.
 
-## 技术栈
+## Tech stack
 
-- Next.js 16（App Router）+ TypeScript
+- Next.js 16 (App Router) + TypeScript
 - Tailwind CSS 4
-- DeepSeek Chat API（服务端 route 调用）
-- Canvas 前端卡片渲染 + Web Share API 存相册
-- PWA（manifest + 图标），手机可添加到主屏幕
-- Docker + Sealos 部署，Kaniko 集群内构建镜像
+- DeepSeek Chat API (server-side route)
+- Canvas card rendering + Web Share API
+- PWA (manifest + icons)
+- Docker + Sealos, Kaniko in-cluster image builds
 
-## 本地运行
+## Local development
 
 ```bash
 npm install
 npm run dev
 ```
 
-在 `.env.local` 中配置：
+Set in `.env.local`:
 
 ```
-DEEPSEEK_API_KEY=你的DeepSeek密钥
+DEEPSEEK_API_KEY=your-deepseek-api-key
 ```
 
-## 制作过程
+## Process
 
-完整的定位、决策与迭代记录见 [`BUILD_LOG.md`](BUILD_LOG.md)。
+See [`BUILD_LOG.md`](BUILD_LOG.md) for the full product positioning, decisions, and iteration log.
 
-## 部署
+## Deploy
 
-镜像构建与发布流程见 `BUILD_LOG.md` 的部署章节，或直接参考仓库内 `Dockerfile`。
+See the deployment section in `BUILD_LOG.md`, or the `Dockerfile` in this repo.
+
+---
+
+## 中文简介
+
+深夜说不出口的话，写一句，另一个时空的你，替你接住。
+
+一个面向大学生深夜情绪场景的轻量 AI 产品：用户写下一句此刻的真实感受，AI 以「另一个时空的你」身份回信——会撒娇、会嘴硬心软，但最后一定接住你。回复可一键生成水墨/霓虹两种卡片，保存到相册、分享到朋友圈，分享卡底部的二维码把新朋友带回产品。
+
+完整定位、关键决策与迭代记录见 [`BUILD_LOG.md`](BUILD_LOG.md)。
